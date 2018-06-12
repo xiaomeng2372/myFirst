@@ -1,16 +1,38 @@
-<html ng-app="myFirstApp">
-<h1>my FirstApp</h2>
-<script src="aj.js"></script>
-<script src="app.js"></script>
-<title>My firstJS </title>
-<body>
-  <h1>My first AngularJS app</h1>
-<div ng-controller="MyFirstC">
-<input type="text" ngModel="name">
-Inside my name is :{{name}};
-</div>
+<!DOCTYPE html>
+<html ng-app='ShoppingListApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style> body { font-size: 1.2em; }</style>
+    <title>Shopping List</title>
+  </head>
+  <body>
+    <h1>Shopping List</h1>
+    <div ng-controller='ShoppingListController'>
+      <!-- Shopping List #1: -->
+      <h3>Shopping List:</h3>
+      <!-- <ul>
+        <li ng-repeat="item in shoppingList1">{{ item }}</li>
+      </ul> -->
+
+      <!-- Shopping List #2: -->
+      <ul>
+        <li ng-repeat = "item in shoppingList2">buy {{ item.quantity }} {{item.name}} <button ng-click="removeItem($index)">Delete</button>  </li>
+        <input type="number" placeholder="Quantity" ng-model="quantity">
+        <input type="text" placeholder="Item Name" ng-model="name">
+        <button ng-click = "addToList()"> Add to List </button>
+        <button ng-click = "clear()"> Clean the list </button>
+        <p> {{errorContext}}</p>
+        
 
 
-</body>
+      </ul>>
 
+      <!-- Shopping List #3: -->
+      
+      
+    </div>
+  </body>
 </html>
+
