@@ -18,12 +18,14 @@
 
       <!-- Shopping List #2: -->
       <ul>
-        <li ng-repeat = "item in shoppingList2">buy {{ item.quantity }} {{item.name}} <button ng-click="removeItem($index)">Delete</button>  </li>
+        <li ng-repeat = "item in shoppingList2">buy {{ item.quantity }} {{item.name}} <button ng-click="removeItem($index)">Delete</button>  <input type="number" placeholder="How much more do you want?" ng-model = "item.more"><button ng-click="addMore($index)">Add more</button></li>
         <input type="number" placeholder="Quantity" ng-model="quantity">
         <input type="text" placeholder="Item Name" ng-model="name">
         <button ng-click = "addToList()"> Add to List </button>
         <button ng-click = "clear()"> Clean the list </button>
         <p> {{errorContext}}</p>
+
+
         
 
 

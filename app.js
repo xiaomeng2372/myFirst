@@ -4,16 +4,19 @@ var shoppingList1 = [ "milk", "donuts", "Peanut Butter", "Sprite" ];
 var shoppingList2 = [
 {
 	name: "milk",
-	quantity: 2
+	quantity: 2,
+	more: 0
 },
 
 {
   name: "donots",
-  quantity: 3
+  quantity: 3,
+  more: 0
 },
 {
 	name: "coca",
-	quantity: 21
+	quantity: 21,
+	more: 0
 }
 
 ];
@@ -24,6 +27,7 @@ angular.module('ShoppingListApp', [])
 shoppingListController.inject = ['$scope', '$filter'];
 function shoppingListController($scope, $filter){
 	var number3;
+	
 	$scope.shoppingList1 = shoppingList1;
 	$scope.shoppingList2 = shoppingList2;
 	$scope.addToList = function(){
@@ -34,11 +38,11 @@ function shoppingListController($scope, $filter){
 
         var newItem = {
         	name: $scope.name,
-        	quantity: $scope.quantity
+        	quantity: $scope.quantity,
+        	more: 0
 
         };
         if(containsObject(newItem,$scope.shoppingList2)){
-        	changeNumber(newItem.name,newItem.quantity,$scope.shoppingList2);
             $scope.errorContext= "You already have this item";
 
 		} else {$scope.shoppingList2.push(newItem);}
@@ -51,12 +55,22 @@ function shoppingListController($scope, $filter){
 
         $scope.shoppingList2.splice(y, 1);
     }
+    $scope.addMore = function(i){
+    	
+    	$scope.shoppingList2[i].quantity = $scope.shoppingList2[i].quantity +$scope.shoppingList2[i].more;
+    	
+    }
+    /*
+    contains should check name
+    */
+
     function containsObject (obj, list) {
     var i;
     for (i = 0; i < list.length; i++) {
-        if (angular.equals(list[i], obj)) {
+        if (angular.equals(list[i].name, obj.name)) {
         	var number3 = i;
             return true;
+
         }
     }
 
@@ -70,6 +84,7 @@ function shoppingListController($scope, $filter){
            		break;
            	}
            }
+           return array;
     }
 }
 /*
